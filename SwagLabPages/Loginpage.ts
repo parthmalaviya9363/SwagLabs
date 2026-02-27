@@ -1,4 +1,5 @@
 import {expect,Locator, Page} from "@playwright/test";
+import { loginLocators } from './locators';
 
 export class Loginpage{
 
@@ -14,11 +15,11 @@ readonly loginsuccess: Locator;
     constructor(page: Page){
 
         this.page = page;
-        this.swaglabsvisible = page.getByText("Swag Labs");
-        this.Username = page.getByPlaceholder('Username');
-        this.Password = page.getByPlaceholder('Password');
-        this.loginbutton = page.getByRole('button', { name: 'Login' });
-        this.loginsuccess = page.getByText('Products');
+        this.swaglabsvisible = page.getByText(loginLocators.swagLabsText);
+        this.Username = page.getByPlaceholder(loginLocators.usernamePlaceholder);
+        this.Password = page.getByPlaceholder(loginLocators.passwordPlaceholder);
+        this.loginbutton = page.getByRole('button', { name: loginLocators.loginButtonName });
+        this.loginsuccess = page.getByText(loginLocators.productsText);
 }
 
 

@@ -43,7 +43,7 @@ export default defineConfig({
         launchOptions: {
                  args: ['--start-maximized'],
                  headless: true,
-                 slowMo: 3000
+                 //slowMo: 3000
                },
        },
     },

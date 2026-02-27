@@ -1,4 +1,5 @@
 import {expect,Locator, Page} from "@playwright/test";
+import { checkoutLocators } from './locators';
 
 export class Checkoutpage{
 
@@ -14,13 +15,13 @@ readonly heading: Locator;
 
     constructor(page: Page){
         this.page = page;
-        this.firstname = page.locator('#first-name');
-        this.lastname = page.locator('#last-name');
-        this.postalcode = page.locator('#postal-code');
-        this.continue = page.getByRole('button', { name: 'continue' });
-        this.itemtotal = page.locator('.summary_total_label');
-        this.finish = page.getByRole('button', { name: 'Finish' });
-        this.heading = page.getByRole('heading', { name: 'Thank you for your order!' });
+        this.firstname = page.locator(checkoutLocators.firstName);
+        this.lastname = page.locator(checkoutLocators.lastName);
+        this.postalcode = page.locator(checkoutLocators.postalCode);
+        this.continue = page.getByRole('button', { name: checkoutLocators.continueButtonName });
+        this.itemtotal = page.locator(checkoutLocators.itemTotal);
+        this.finish = page.getByRole('button', { name: checkoutLocators.finishButtonName });
+        this.heading = page.getByRole('heading', { name: checkoutLocators.headingText });
 
 }
 

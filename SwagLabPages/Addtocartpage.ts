@@ -1,4 +1,5 @@
 import {expect,Locator, Page} from "@playwright/test";
+import addToCartLocators from './locators';
 
 export class Addtocartpage{
 
@@ -16,14 +17,14 @@ export class Addtocartpage{
         constructor(page: Page){
     
             this.page = page;
-            this.Productstextvisible = page.getByText('Products');
-            this.Additem1 = page.locator('#add-to-cart-sauce-labs-backpack');
-            this.Additem2 = page.locator('#add-to-cart-sauce-labs-bike-light');
-            this.itemcount = page.locator('.shopping_cart_badge');
-            this.clickcartbutton = page.locator('.shopping_cart_badge');
-            this.yourcarttextvisible = page.getByText('Your Cart');
-            this.clickcheckout = page.getByRole('button', { name: 'Checkout' });
-            this.checkouttext = page.getByText('Checkout: Your Information');
+            this.Productstextvisible = page.getByText(addToCartLocators.productsText);
+            this.Additem1 = page.locator(addToCartLocators.addItem1);
+            this.Additem2 = page.locator(addToCartLocators.addItem2);
+            this.itemcount = page.locator(addToCartLocators.itemCount);
+            this.clickcartbutton = page.locator(addToCartLocators.itemCount);
+            this.yourcarttextvisible = page.getByText(addToCartLocators.yourCartText);
+            this.clickcheckout = page.getByRole('button', { name: addToCartLocators.checkoutButtonName });
+            this.checkouttext = page.getByText(addToCartLocators.checkoutText);
     }
 
     

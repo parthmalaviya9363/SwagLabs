@@ -1,4 +1,5 @@
 import {expect,Locator, Page} from "@playwright/test";
+import { logoutLocators } from './locators';
 
 export class Logoutpage{
 
@@ -10,11 +11,12 @@ readonly logout: Locator;
 readonly swaglabsvisible: Locator;
 
     constructor(page: Page){
-        this.backhome = page.locator('#back-to-products');;
-        this.Productstextvisible = page.getByText('Products');
-        this.openmenu = page.getByRole('button', { name: 'Open Menu' });
-        this.logout = page.locator('#logout_sidebar_link');
-        this.swaglabsvisible = page.getByText("Swag Labs");
+        this.page = page;
+        this.backhome = page.locator(logoutLocators.backHome);
+        this.Productstextvisible = page.getByText(logoutLocators.productsText);
+        this.openmenu = page.getByRole('button', { name: logoutLocators.openMenuButtonName });
+        this.logout = page.locator(logoutLocators.logoutLink);
+        this.swaglabsvisible = page.getByText(logoutLocators.swagLabsText);
     }
 
 async Clickonbackhomebutton(){
