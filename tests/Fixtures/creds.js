@@ -1,8 +1,6 @@
-import { test as base } from '@playwright/test';
+const base = require('@playwright/test').test;
 
-type Creds = { username: string; password: string };
-
-export const test = base.extend<{ creds: Creds }>({
+const test = base.extend({
   creds: async ({}, use) => {
     const username = 'standard_user';
     const password = 'secret_sauce';
@@ -11,4 +9,6 @@ export const test = base.extend<{ creds: Creds }>({
   },
 });
 
-export { expect } from '@playwright/test';
+const { expect } = require('@playwright/test');
+
+module.exports = { test, expect };
