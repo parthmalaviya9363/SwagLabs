@@ -34,9 +34,19 @@ async VerifyURLlaunchsuccess(){
 }
 
 async EnterCredentialsAndClickOnLogin(username: string, password: string){
-    await this.Username.fill(username);
-    await this.Password.fill(password);
-    await this.loginbutton.click();
+    try {
+        await this.Username.fill(username);
+        await this.Password.fill(password);
+        await this.loginbutton.click();
+    } catch (error) {
+        console.error('Login failed:', error);
+        try {
+            await this.page.screenshot({ path: 'Screenshots/LoginError.png' });
+        } catch (screenshotError) {
+            console.error('Failed to capture screenshot after login error:', screenshotError);
+        }
+        throw error;
+    }
 }
 
 async VerifyLoginSuccessfull(){

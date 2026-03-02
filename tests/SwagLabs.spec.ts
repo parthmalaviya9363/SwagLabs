@@ -8,7 +8,7 @@ import { Logoutpage } from "../SwagLabPages/Logoutpage";
     let context: BrowserContext;
     let page: Page;
     
-  
+  // Login method
 test.beforeAll(async ({ browser, creds }) => {
         context = await browser.newContext(); // fresh context for this suite
         page = await context.newPage();
